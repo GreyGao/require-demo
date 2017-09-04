@@ -4,10 +4,15 @@ require.config({
     }
 });
 
-requirejs(["hello"], function(content) {
-    var text = JSON.stringify(content);
-    var div = document.createElement("div");
-    div.innerHTML = text;
-    document.body.appendChild(div);
+requirejs(["hello"], function(hello) {
+    var text = JSON.stringify(hello);
+    var content = document.createElement("div");
+    content.innerHTML = text;
+    document.body.appendChild(content);
+
+    var sayHi = hello.sayHi;
+    var hi = document.createElement("div");
+    hi.innerHTML = sayHi;
+    document.body.appendChild(hi);
 });
 

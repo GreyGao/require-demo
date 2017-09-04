@@ -20,7 +20,7 @@ require.config({
 });
 
 requirejs(["hello"], function(hello) {
-	//回调函数内容
+    //回调函数内容
     var text = JSON.stringify(hello);
     var content = document.createElement("div");
     content.innerHTML = text;

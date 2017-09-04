@@ -1,7 +1,13 @@
-requirejs(["hello"], function(util) {
-    //This function is called when scripts/helper/util.js is loaded.
-    //If util.js calls define(), then this function is not fired until
-    //util's dependencies have loaded, and the util argument will hold
-    //the module value for "helper/util".
-    console.log(util)
+require.config({
+    paths: {
+        jquery: 'jquery.min'
+    }
 });
+
+requirejs(["hello"], function(content) {
+    var text = JSON.stringify(content);
+    var div = document.createElement("div");
+    div.innerHTML = text;
+    document.body.appendChild(div);
+});
+

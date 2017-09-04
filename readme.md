@@ -25,12 +25,14 @@ requirejs(["hello"], function(hello) {
     var content = document.createElement("div");
     content.innerHTML = text;
     document.body.appendChild(content);
+  	console.log(2)
 });
 ```
 3. 与之相应的，被引入的依赖如hello.js就需要用define()来定义，才可以被成功引用，而在define()内部，我们可以继续引用其他依赖，如frank.js；
 ```javascript
 define(["frank"],function (text) {
 	console.log(text)
+    console.log(1)
   	//回调函数内容
   	return text;
     }
@@ -48,4 +50,9 @@ define(
     }
 );
 ```
-5. 这样就可以实现基本的RequireJS模块化管理，例子中的main.js定义了一个固定路径的jquery依赖和自己定义的hello.js模块，又在hello.js内引入frank.js的数据，最后成功拿到frank的数据，输出在页面里。
+5. 这样就可以实现基本的RequireJS模块化管理，例子中的main.js定义了一个固定路径的jquery依赖和自己定义的hello.js模块，又在hello.js内引入frank.js的数据，最后成功拿到frank的数据，输出在页面里。同时得到控制台的数据如下，可以看出执行顺序是先hello.js后main.js：
+```
+{name: "frank", age: 18, hobby: "coding", parter: "dog", sayHi: "Hello, Frank"}
+1
+2
+```
